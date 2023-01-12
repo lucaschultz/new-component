@@ -1,8 +1,8 @@
 <p align="center">
   <img src="https://github.com/joshwcomeau/new-component/blob/master/docs/logo@2x.png?raw=true" width="285" height="285" alt="new-component logo">
-  <br>
-  <a href="https://www.npmjs.org/package/new-component"><img src="https://img.shields.io/npm/v/new-component.svg?style=flat" alt="npm"></a>
 </p>
+
+**⚠️ This is a fork of [Josh Comeaus `new-component` command line utility](https://github.com/joshwcomeau/new-component) ⚠️**
 
 # `new-component`
 
@@ -98,6 +98,32 @@ Legacy `createClass` components are not supported.
 Command line: `--type <value>` or `-t <value>`
 
 JSON config: `{ "type": <value> }`
+<br />
+
+### Template
+
+Use a custom template.
+
+The content of the template file will be copied to the component, with
+`COMPONENT_NAME` beeing replaced with the name of the component. An example
+template file:
+
+```tsx
+type COMPONENT_NAMEProps = {};
+
+const COMPONENT_NAME = (props: COMPONENT_NAMEProps) => {
+  return <div />;
+};
+
+export default COMPONENT_NAME;
+```
+
+**Usage:**
+
+Command line: `--template <value>` or `-t <value>`
+
+JSON config: `{ "template": <value> }`
+
 <br />
 
 ### Directory
