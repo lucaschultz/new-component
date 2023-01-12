@@ -35,7 +35,7 @@ program
   .arguments('<componentName>')
   .option(
     '-t, --type <componentType>',
-    'Type of React component to generate (default: "functional")',
+    'Type of React component to generate, options are: "class", "pure-class", "functional"',
     /^(class|pure-class|functional)$/i,
     config.type
   )
@@ -46,12 +46,12 @@ program
   )
   .option(
     '-d, --dir <pathToDirectory>',
-    'Path to the "components" directory (default: "src/components")',
+    'Path to the "components" directory',
     config.dir
   )
   .option(
     '-x, --extension <fileExtension>',
-    'Which file extension to use for the component (default: "js")',
+    'Which file extension to use for the component',
     config.extension
   )
   .parse(process.argv);
