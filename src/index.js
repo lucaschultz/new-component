@@ -13,9 +13,9 @@ const {
   logError,
 } = require('./helpers');
 const {
-  requireOptional,
   mkDirPromise,
   readFilePromiseRelative,
+  readFilePromise,
   writeFilePromise,
 } = require('./utils');
 
@@ -38,6 +38,11 @@ program
     'Type of React component to generate (default: "functional")',
     /^(class|pure-class|functional)$/i,
     config.type
+  )
+  .option(
+    '--template <pathToTemplate>',
+    'Path to a "template" file (overrides the built-in templates specified with the --type option)',
+    config.template
   )
   .option(
     '-d, --dir <pathToDirectory>',
@@ -67,7 +72,7 @@ export * from './${componentName}';
 export { default } from './${componentName}';
 `);
 
-logIntro({ name: componentName, dir: componentDir, type: program.type });
+logIntro({ name: componentName, dir: componentDir, type: program.type, template: program.template });
 
 // Check if componentName is provided
 if (!componentName) {
@@ -97,7 +102,13 @@ if (fs.existsSync(fullPathToComponentDir)) {
 
 // Start by creating the directory that our component lives in.
 mkDirPromise(componentDir)
-  .then(() => readFilePromiseRelative(templatePath))
+  .then(() => {
+    if (program.template !== undefined) {
+      return readFilePromise(program.template);
+    } else {
+      return readFilePromiseRelative(templatePath);
+    }
+  })
   .then((template) => {
     logItemCompletion('Directory created.');
     return template;

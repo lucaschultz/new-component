@@ -33,6 +33,7 @@ module.exports.getConfig = () => {
     type: 'functional',
     dir: 'src/components',
     extension: 'js',
+    template: undefined
   };
 
   const globalOverrides = requireOptional(
@@ -98,7 +99,7 @@ const logComponentType = (selected) =>
     )
     .join('  ');
 
-module.exports.logIntro = ({ name, dir, type }) => {
+module.exports.logIntro = ({ name, dir, type, template }) => {
   console.info('\n');
   console.info(
     `✨  Creating the ${chalk.bold.rgb(...colors.gold)(name)} component ✨`
@@ -109,7 +110,11 @@ module.exports.logIntro = ({ name, dir, type }) => {
   const typeString = logComponentType(type);
 
   console.info(`Directory:  ${pathString}`);
-  console.info(`Type:       ${typeString}`);
+  if (template !== undefined) {
+    console.info(`Template:   ${chalk.bold.rgb(...colors.blue)(template)}`);
+  } else {
+    console.info(`Type:       ${typeString}`);
+  }
   console.info(
     chalk.rgb(...colors.darkGray)('=========================================')
   );
