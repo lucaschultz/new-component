@@ -1,14 +1,14 @@
 {
-  "name": "new-component",
-  "version": "4.0.1",
+  "name": "@lucaschultz/new-component",
+  "version": "4.1.0",
   "description": "CLI for creating new React components",
-  "homepage": "https://github.com/joshwcomeau/new-component",
+  "homepage": "https://github.com/lucaschultz/new-component",
   "repository": {
     "type": "git",
-    "url": "https://github.com/joshwcomeau/new-component"
+    "url": "https://github.com/lucaschultz/new-component"
   },
   "bugs": {
-    "url": "https://github.com/joshwcomeau/new-component/issues"
+    "url": "https://github.com/lucaschultz/new-component/issues"
   },
   "main": "src/index.js",
   "scripts": {
@@ -22,6 +22,9 @@
     "boilerplate"
   ],
   "author": "Joshua Comeau",
+  "contributors": [
+    "Luca Schultz"
+  ],
   "license": "MIT",
   "bin": {
     "new-component": "./src/index.js"
